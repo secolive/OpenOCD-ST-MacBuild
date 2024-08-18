@@ -1,0 +1,15 @@
+[submodule "src/OpenOCD"]
+	path = src/OpenOCD
+	url = https://github.com/STMicroelectronics/OpenOCD
+[submodule "src/libusb"]
+	path = src/libusb
+	url = https://github.com/libusb/libusb
+[submodule "src/hidapi"]
+	path = src/hidapi
+	url = https://github.com/libusb/hidapi
+[submodule "src/libftdi"]
+	path = src/libftdi
+	url = git://developer.intra2net.com/libftdi
+[submodule "src/libcapstone"]
+	path = src/libcapstone
+	url = https://github.com/libcapstone/libcapstone
