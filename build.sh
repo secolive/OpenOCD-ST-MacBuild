@@ -436,7 +436,8 @@ function conf_OpenOCD
   prepareAndGoToBuildDir "$BLD_OPENOCD"
   bootstrap "$SRC_OPENOCD"
   typeset W2="-Wno-strict-prototypes -Wno-deprecated-declarations -Wno-pointer-bool-conversion"
-  CFLAGS="${CFLAGS} ${W2} -I$SRC_LIBUSB/libusb/ -I$SRC_LIBFTDI/src/ -I$SRC_HIDAPI/hidapi/" \
+  CFLAGS="${CFLAGS} ${W2} -I$SRC_LIBUSB/libusb/ -I$SRC_LIBFTDI/src/ -I$SRC_HIDAPI/hidapi/ -I$SRC_LIBCAPSTONE/include/capstone/" \
+    
     invokeConfigure "$SRC_OPENOCD/configure"
 }
 
