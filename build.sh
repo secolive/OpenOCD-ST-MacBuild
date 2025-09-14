@@ -550,6 +550,11 @@ function filterCmd
   exit 1
 }
 
+if [[ "$*" == "" ]] ; then
+  usage
+  exit 0
+fi
+
 for cmd in $* ; do
   case "$cmd" in
   --help)
