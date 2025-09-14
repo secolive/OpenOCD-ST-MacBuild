@@ -95,3 +95,22 @@ specific steps can hence be specified on the command-line. Here is the tree of a
     - clean_all                      clean the interim build files as well as the output files
       +-- clean_build                clean the interim build files
       +-- clean_out                  clean the output directory
+
+
+CMake3 and homebrew
+-------------------
+Lib capstone requires the use of CMake v3 maximum, because CMake v4 introduces breaking changes. If you're
+using homebrew, having cmake 3 can be a bit of a pain. Here is a working procedure:
+
+  1. Set up a new homebrew installation just for the purpose of deploying cmake 3, eg in your home dir:
+     `# git clone https://github.com/Homebrew/brew _homebrew-cmake3`
+  2. Tap into https://github.com/performous/homebrew-pinned_cmake3/ :
+     `_homebrew-cmake3/bin/brew tap "performous/pinned_cmake3"`
+  3. Install v3 of cmake :
+     `_homebrew-cmake3/bin/brew install cmake@3.31.7`
+  4. Create a script named "cmake3" somewhere in a directory within your PATH :
+     `printf "%s\n%s\n" '#!/bin/bash' '"$HOME/_homebrew-cmake3/bin/cmake" "$@"' > ~/bin/cmake3`
+     `chmod 755 ~/bin/cmake3`
+  5. Verify that you have cmake3 in your path :
+     `which cmake3`
+    

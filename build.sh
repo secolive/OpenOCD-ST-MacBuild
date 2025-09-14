@@ -53,7 +53,8 @@ export CMAKE_LIBRARY_PATH="$BLD_LIBS"
 W1="-Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-but-set-parameter -Wno-unused-function" 
 export CFLAGS="-O3 -Werror -Wall ${W1}"
 export LDFLAGS="-dead_strip -L$BLD_LIBS/ -framework Foundation -framework AppKit -framework IOKit -framework security" \
-
+CMAKE3="$( which cmake3 2>/dev/null || echo cmake)"
+CMAKE="cmake"
 
 
 
@@ -316,7 +317,7 @@ function invokeCmake
     PKG_CONFIG_PATH="${PKG_CONFIG_PATH:-}" \
     CMAKE_LIBRARY_PATH="${CMAKE_LIBRARY_PATH:-}" \
     CMAKE_INCLUDE_PATH="${CMAKE_INCLUDE_PATH:-}" \
-      cmake "$@" -S "$srcdir"
+      "$CMAKE" "$@" -S "$srcdir"
   )
 }
 
@@ -419,6 +420,7 @@ function conf_libcapstone
 
   prepareAndGoToBuildDir "$BLD_LIBCAPSTONE"
   CFLAGS="${CFLAGS}" \
+  CMAKE="$CMAKE3" \
     invokeCmake "$SRC_LIBCAPSTONE" \
       -D CAPSTONE_BUILD_STATIC_RUNTIME=OFF \
       -D CAPSTONE_BUILD_SHARED=OFF \
